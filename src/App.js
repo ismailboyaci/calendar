@@ -1,25 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Home from './pages/Home';
+import React from 'react';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './config/theme.config';
+import ResponsiveAppBar from './components/navbar';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+
+      <ThemeProvider theme={theme}>
+        <Route exact path="/">
+          <SignIn />
+        </Route>
+        <Route  path="/home">
+          <Home />
+        </Route>
+        <Route  path="/nav">
+          <ResponsiveAppBar />
+        </Route>
+
+        <Route path="/signup">
+          <SignUp />
+        </Route>
+
+      </ThemeProvider>
+
+    </Router>
+  )
 }
 
 export default App;
