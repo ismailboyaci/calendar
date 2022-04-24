@@ -48,6 +48,9 @@ const ResponsiveAppBar = () => {
     }
     addDoc(collection(db, `events+${user.uid}`), event)
   }
+  const values = {
+    someDate: new Date().toISOString().substring(0, 10)
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -93,7 +96,7 @@ const ResponsiveAppBar = () => {
                 label="Event date"
                 
                 type="datetime-local"
-                defaultValue="2022-04-01T10:30"
+                defaultValue={values.someDate}
                 fullWidth
                 variant="standard"
                 onChange={(e) => {
